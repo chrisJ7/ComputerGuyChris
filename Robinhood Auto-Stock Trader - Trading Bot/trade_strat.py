@@ -1,6 +1,7 @@
 # Create your own personal trading strategy to trade with
 import pandas as pd
 
+import robin_stocks.robinhood as rh
 import robin_stocks.helper as helper
 import robin_stocks.urls as urls
 
@@ -18,19 +19,21 @@ class trader():
         span_interval = {'day': '5minute', 'week': '10minute', 'month': 'hour', '3month': 'hour', 'year': 'day', '5year': 'week'}
         interval = span_interval[span]
 
-        symbols = helper.inputs_to_set(stock)
-        url = urls.historicals()
-        payload = { 'symbols' : ','.join(symbols),
-                    'interval' : interval,
-                    'span' : span,
-                    'bounds' : 'regular'}
-
-        data = helper.request_get(url,'results',payload)
-
-        historical_data = []
-        for item in data:
-            for subitem in item['historicals']:
-                historical_data.append(subitem)
+        '''Due to users receiving a 404 Error, the historical data section has been updated'''
+        # symbols = helper.inputs_to_set(stock)
+        # url = urls.historicals()
+        # payload = { 'symbols' : ','.join(symbols),
+        #             'interval' : interval,
+        #             'span' : span,
+        #             'bounds' : 'regular'}
+        #
+        # data = helper.request_get(url,'results',payload)
+        #
+        # historical_data = []
+        # for item in data:
+        #     for subitem in item['historicals']:
+        #         historical_data.append(subitem)
+        historical_data = rh.stocks.get_stock_historicals(stock, interval=interval, span=span, bounds='extended')
 
         df = pd.DataFrame(historical_data)
 
