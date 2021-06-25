@@ -2,7 +2,7 @@ import config
 import trade_strat
 import grapher
 
-import robin_stocks as rh
+import robin_stocks.robinhood as rh
 import datetime as dt
 import time
 import pandas as pd
