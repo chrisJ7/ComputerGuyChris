@@ -80,10 +80,10 @@ def buy(stock, allowable_holdings):
     buy_price = round((price+0.10), 2)
     # un-comment when ready to trade on the live market
     print('buy is currently commented')
-    buy_order = rh.orders.order_buy_limit(symbol=stock,
-                                          quantity=allowable_holdings,
-                                          limitPrice=buy_price,
-                                          timeInForce='gfd')
+    # buy_order = rh.orders.order_buy_limit(symbol=stock,
+    #                                       quantity=allowable_holdings,
+    #                                       limitPrice=buy_price,
+    #                                       timeInForce='gfd')
 
     print('### Trying to BUY {} at ${}'.format(stock, price))
 
