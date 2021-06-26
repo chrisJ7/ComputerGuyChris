@@ -24,3 +24,4 @@ Due to users receiving a 404 Error from trade_strat.py in the get_historical_pri
 updated files:
      - trader.py
      - trade_strat.py
+     
